@@ -5,7 +5,7 @@ import Arrow from '../assets/cerrar2.svg'
 import Axios from 'axios';
 import { API_URL } from '../util/Constantes.js';
 
-function PopupModificarCurso({ onClose, nombreCurso, fecha, hora, modalidad, direccion, imparte, estatusCupo, estatusCurso, tipoCurso, curso, valorCurricular, ligaTeams, closePrev, onOpenPopupMsj }) {
+function PopupModificarCurso({ onClose, nombreCurso, fecha, hora, modalidad, direccion, imparte, cupo, estatusCupo, estatusCurso, tipoCurso, curso, valorCurricular, ligaTeams, closePrev, onOpenPopupMsj }) {
     const [errors, setErrors] = useState({});
     const [dataTiposCurso, setDataTiposCurso] = useState([])
     const dateInputRef = useRef(null);
@@ -37,6 +37,7 @@ function PopupModificarCurso({ onClose, nombreCurso, fecha, hora, modalidad, dir
         fecha: fecha,
         hora: hora,
         imparte: imparte,
+        cupo: cupo,
         estatusCupo: estatusCupo,
         estatusCurso: estatusCurso,
         modalidad: modalidad,
@@ -56,7 +57,7 @@ function PopupModificarCurso({ onClose, nombreCurso, fecha, hora, modalidad, dir
         if (!formData.fecha) newErrors.fecha = "La fecha es obligatoria.";
         if (!formData.hora) newErrors.hora = "La hora es obligatoria.";
         if (!formData.imparte || formData.imparte.trim() === '') newErrors.imparte = "La persona que imparte el curso es obligatoria.";
-        if (!formData.estatusCupo) newErrors.estatusCupo = "El cupo es obligatorio.";
+        // if (!formData.estatusCupo) newErrors.estatusCupo = "El cupo es obligatorio.";
         if (!formData.estatusCurso) newErrors.estatusCurso = "El estado del curso es obligatorio.";
         if (!formData.modalidad) newErrors.modalidad = "La modalidad es obligatoria.";
         if (!formData.tipoCurso) newErrors.tipoCurso = "El tipo de curso es obligatorio.";
@@ -314,10 +315,10 @@ function PopupModificarCurso({ onClose, nombreCurso, fecha, hora, modalidad, dir
                                 <Grid item xs={6}>
                                     <TextField fullWidth variant="outlined" size="small"
                                         name="estatusCupo"
-                                        value={formData.estatusCupo}
+                                        value={formData.cupo}
                                         onChange={handleChange}
-                                        error={!!errors.estatusCupo}
-                                        helperText={errors.estatusCupo} sx={{
+                                        error={!!errors.cupo}
+                                        helperText={errors.cupo} sx={{
                                             backgroundColor: '#FFFFFF', borderRadius: '15px', marginTop: 1,
                                             '& .MuiOutlinedInput-root': {
                                                 borderRadius: '15px',
