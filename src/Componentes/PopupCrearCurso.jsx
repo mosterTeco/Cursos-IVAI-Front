@@ -425,7 +425,7 @@ function PopupCrearCurso({ onClose, onOpenPopupMsj }) {
                                 <Grid item xs={6}>
                                     <TextField fullWidth variant='outlined' size='small' name='cupo'
                                         error={!!errors.cupo} helperText={errors.cupo}
-                                        onInput={handleChangeInputNumbers}
+                                        onInput={handleInputNumbers}
                                         sx={{
                                             backgroundColor: '#FFFFFF', borderRadius: '15px', marginTop: 1,
                                             '& .MuiOutlinedInput-root': {
