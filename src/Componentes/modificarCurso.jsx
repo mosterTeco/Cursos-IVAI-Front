@@ -106,17 +106,15 @@ function ModificarCurso({ onClose, nombreCurso, fecha, hora, modalidad, direccio
         }))
     };
 
-    const handleChangeInputNumbers =(e) => {
+    const handleChangeInputNumbers = (e) => {
         const { name, value } = e.target;
-        const regex = /^[0-9\s]*$/
-
-        if(regex.test(value) || value === "") {
-            setFormData((formData) => ({
+        if (/^[1-9][0-9]*$/.test(value) || value === "") {
+            setFormData({
                 ...formData,
                 [name]: value
-            }));
+            });
         }
-    }
+    };
 
     const handleInputText = (e) => {
         const { name, value } = e.target;
