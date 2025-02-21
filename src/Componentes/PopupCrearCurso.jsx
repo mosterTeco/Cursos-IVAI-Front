@@ -135,7 +135,7 @@ function PopupCrearCurso({ onClose, onOpenPopupMsj }) {
 
         if (!DataCurso.imparte) newErrors.imparte = "La persona que imparte el curso es obligatoria.";
 
-        // if (!DataCurso.cupo) newErrors.cupo = "El cupo es obligatorio.";
+        if (!DataCurso.cupo) newErrors.cupo = "El cupo es obligatorio.";
 
         if (!DataCurso.estatusCurso) newErrors.estatusCurso = "El estado del curso es obligatorio.";
 
@@ -411,7 +411,7 @@ function PopupCrearCurso({ onClose, onOpenPopupMsj }) {
                                 </Grid>
                                 <Grid item xs={6}>
                                     <TextField fullWidth variant='outlined' size='small' name='cupo'
-                                        // error={!!errors.cupo} helperText={errors.cupo}
+                                        error={!!errors.cupo} helperText={errors.cupo}
                                         onChange={handleInputChange}
                                         sx={{
                                             backgroundColor: '#FFFFFF', borderRadius: '15px', marginTop: 1,
