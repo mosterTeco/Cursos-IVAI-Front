@@ -423,6 +423,9 @@ function PopupCrearCurso({ onClose, onOpenPopupMsj }) {
                                     <TextField fullWidth variant='outlined' size='small' name='cupo'
                                         error={!!errors.cupo} helperText={errors.cupo}
                                         onChange={handleChangeInputNumbers}
+                                        onInput={(e) => {
+                                            e.target.value = e.target.value.replace(/^0+/, ""); // Elimina ceros al inicio
+                                        }}
                                         sx={{
                                             backgroundColor: '#FFFFFF', borderRadius: '15px', marginTop: 1,
                                             '& .MuiOutlinedInput-root': {
