@@ -54,7 +54,7 @@ function ModificarCurso({ onClose, nombreCurso, fecha, hora, modalidad, direccio
         if (!formData.fecha) newErrors.fecha = "La fecha es obligatoria.";
         if (!formData.hora) newErrors.hora = "La hora es obligatoria.";
         if (!formData.imparte || formData.imparte.trim() === '') newErrors.imparte = "La persona que imparte el curso es obligatoria.";
-        if (!formData.estatusCupo) newErrors.estatusCupo = "El cupo es obligatorio.";
+        if (!formData.cupo) newErrors.cupo = "El cupo es obligatorio.";
         if (!formData.estatusCurso) newErrors.estatusCurso = "El estado del curso es obligatorio.";
         if (!formData.modalidad) newErrors.modalidad = "La modalidad es obligatoria.";
         if (!formData.tipo) newErrors.tipo = "El tipo de curso es obligatorio.";
