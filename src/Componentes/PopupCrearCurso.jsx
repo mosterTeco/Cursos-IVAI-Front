@@ -78,6 +78,16 @@ function PopupCrearCurso({ onClose, onOpenPopupMsj }) {
         valorCurricular: '',
     })
 
+    const handleChangeInputNumbers = (e) => {
+        const { name, value } = e.target;
+        if (/^[1-9][0-9]*$/.test(value) || value === "") {
+            setDataCurso({
+                ...DataCurso,
+                [name]: value
+            });
+        }
+    };
+
     const handleInputChange = (e) => {
         const { name, value } = e.target;
         setDataCurso({ ...DataCurso, [name]: value });
@@ -412,7 +422,7 @@ function PopupCrearCurso({ onClose, onOpenPopupMsj }) {
                                 <Grid item xs={6}>
                                     <TextField fullWidth variant='outlined' size='small' name='cupo'
                                         error={!!errors.cupo} helperText={errors.cupo}
-                                        onChange={handleInputChange}
+                                        onChange={handleChangeInputNumbers}
                                         sx={{
                                             backgroundColor: '#FFFFFF', borderRadius: '15px', marginTop: 1,
                                             '& .MuiOutlinedInput-root': {
