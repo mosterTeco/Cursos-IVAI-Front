@@ -367,8 +367,8 @@ function ModificarCurso({ onClose, nombreCurso, fecha, hora, modalidad, direccio
                                     size="small"
                                     name="cupo"
                                     value={formData.cupo || ""}
-                                    error={!!errors.estatusCupo}
-                                    helperText={errors.estatusCupo}
+                                    error={!!errors.cupo}
+                                    helperText={errors.cupo}
                                     onChange={handleChangeInputNumbers}
                                     sx={commonStyles}
                                 />
