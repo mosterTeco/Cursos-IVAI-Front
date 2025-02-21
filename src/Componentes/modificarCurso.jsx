@@ -119,7 +119,7 @@ function ModificarCurso({ onClose, nombreCurso, fecha, hora, modalidad, direccio
 
             setErrors((errors) => ({
                 ...errors,
-                [name]: ""
+                [name]: value
             }));
         }
     }
@@ -366,7 +366,7 @@ function ModificarCurso({ onClose, nombreCurso, fecha, hora, modalidad, direccio
                                     variant="outlined"
                                     size="small"
                                     name="cupo"
-                                    value={formData.cupo || ""}
+                                    value={formData.cupo}
                                     // error={!!errors.cupo}
                                     // helperText={errors.cupo}
                                     onChange={handleChangeInputNumbers}
