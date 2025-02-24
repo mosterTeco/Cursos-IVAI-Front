@@ -99,6 +99,7 @@ body {
     align-items: center;
     justify-content: center;
     gap: 10px;
+    color: #E7B756;
 }
 
 .pagination-numbers-container {
@@ -107,6 +108,7 @@ body {
     max-width: 200px; 
     gap: 5px;
     padding: 5px;
+    color: #E7B756;
 }
 
 .pagination-number {
@@ -114,6 +116,7 @@ body {
     padding: 5px 10px;
     margin: 0;
     white-space: nowrap;
+    color: #E7B756;
 }
 
 .numbers {

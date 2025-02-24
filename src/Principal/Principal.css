@@ -69,7 +69,7 @@ body {
     width: auto;
     margin-right: 2vw;
     filter: invert(100%) sepia(1%) saturate(7482%) hue-rotate(145deg) brightness(107%) contrast(100%);
-    z-index: 10000;
+    z-index: 1;
     
 }
 
@@ -110,11 +110,10 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: auto;
     min-height: 30vh;
-    max-width: 70%;
+    max-width: 100%;
     text-align: center;
-    padding-right: 2vw;
+    padding-left: 10vw;
 }
 
 .InfoCursos {

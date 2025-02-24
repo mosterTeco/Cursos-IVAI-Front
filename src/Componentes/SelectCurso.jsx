@@ -107,7 +107,7 @@ function SelectCurso({ onClose, handleOpenPopupUpdateCurso }) {
                             </div>
                         ))
                     ) : (
-                        <p>No se encontraron cursos.</p>
+                        <p style={{ textAlign:"center", margin:"10px", color:'#FFF' }}>No se encontraron cursos.</p>
                     )}
                 </main>
                 <div className="pagination">
