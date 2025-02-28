@@ -99,7 +99,7 @@ function ModificarCurso({ onClose, nombreCurso, fecha, hora, modalidad, direccio
 
         const jsonData = {
             curso: finalFormData,
-            constancia: selectedFile.constancia
+            constancia: selectedFile ? selectedFile.constancia : null,
         }
 
         try {
