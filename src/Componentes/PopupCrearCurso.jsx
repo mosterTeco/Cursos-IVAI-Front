@@ -169,43 +169,15 @@ function PopupCrearCurso({ onClose, onOpenPopupMsj }) {
         timeInputRef.current.showPicker();
     };
 
-    // const handleSubmit = async () => {
-
-    //     const validationErrors = validateFields();
-
-    //     if (Object.keys(validationErrors).length > 0) {
-    //         setErrors(validationErrors);
-    //         return;
-    //     }
-
-    //     try {
-    //         const respuesta = await axios.post("http://187.216.225.247:4567/registroCurso", DataCurso);
-    //         // const respuesta = await axios.post("http://localhost:4567/registroCurso", DataCurso);
-
-    //         if (respuesta.status === 200) {
-    //             onOpenPopupMsj({
-    //                 titulo: 'Curso registrado',
-    //                 mensaje: 'El curso se ha registrado correctamente'
-    //             }, false);
-    //         } else {
-    //             onOpenPopupMsj({
-    //                 titulo: 'Error en el Registro',
-    //                 mensaje: 'Ocurrió un error durante el proceso. Por favor, inténtelo de nuevo más tarde.'
-    //             }, true);
-    //         }
-    //     } catch (error) {
-    //         console.error('Error al registrar el curso:', error);
-    //         onOpenPopupMsj({
-    //             titulo: 'Error del servidor',
-    //             mensaje: 'No se pudo procesar la solicitud. Por favor, inténtelo de nuevo más tarde.'
-    //         }, true);
-    //     }
-    // };
-
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-
+        const validationFields = validateFields();
+        
+        if (Object.keys(validationFields).length > 0){
+            setErrors(validateFields);
+            return;
+        }
 
         const jsonData = {
             curso: DataCurso,
