@@ -216,6 +216,7 @@ function RegistroMain() {
               curso={selectedCurso.curso}
               valorCurricular={selectedCurso.valorCurricular}
               ligaTeams={selectedCurso.ligaTeams}
+              constancia={selectedCurso.constancia}
               closePrev={handleCloseUpdatePopup}
               onOpenPopupMsj={handleOpenUpdatePopupMsj}
             />

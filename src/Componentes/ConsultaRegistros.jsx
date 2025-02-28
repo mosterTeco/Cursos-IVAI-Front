@@ -178,7 +178,7 @@ function ConsultaRegistros(Props) {
             const a = document.createElement("a");
     
             a.href = url;
-            a.download = "constancias.zip";  // Nombre del archivo ZIP
+            a.download = "constancias.zip";
             document.body.appendChild(a);
             a.click();
             document.body.removeChild(a);

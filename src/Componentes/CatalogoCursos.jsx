@@ -179,6 +179,7 @@ function catalogoCursos() {
                                 <tr>
                                     <th>Id</th>
                                     <th>Nombre</th>
+                                    <th>Acción</th>
                                 </tr>
                             </thead>
                             <tbody className='table-Data'>

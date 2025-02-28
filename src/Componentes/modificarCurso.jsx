@@ -1,12 +1,27 @@
 import { Button, CardActions, CardContent, CardHeader, Typography, Grid, TextField, Select, MenuItem, Menu } from '@mui/material';
 import { useState, useEffect, useRef } from 'react';
+import styled from '@emotion/styled';
+import CloudUploadIcon from '@mui/icons-material/CloudUpload';
 import '../Principal/Principal.css'
 import Arrow from '../assets/cerrar2.svg'
 import Axios from 'axios';
 import { API_URL } from '../util/Constantes.js';
 
-function ModificarCurso({ onClose, nombreCurso, fecha, hora, modalidad, direccion, imparte, cupo, estatusCupo, estatusCurso, tipoCurso, curso, valorCurricular, ligaTeams, closePrev, onOpenPopupMsj }) {
+function ModificarCurso({ onClose, nombreCurso, fecha, hora, modalidad, direccion, imparte, cupo, estatusCupo, estatusCurso, tipoCurso, curso, valorCurricular, ligaTeams, constancia, closePrev, onOpenPopupMsj }) {
+    const VisuallyHiddenInput = styled('input')({
+        clip: 'rect(0 0 0 0)',
+        clipPath: 'inset(50%)',
+        height: 1,
+        overflow: 'hidden',
+        position: 'absolute',
+        bottom: 0,
+        left: 0,
+        whiteSpace: 'nowrap',
+        width: 1,
+    });
 
+    let constaciaVal = constancia ? "Con constancia." : "Sin constancia.";
+    
     const [errors, setErrors] = useState({});
     const [dataTiposCurso, setDataTiposCurso] = useState([])
     const dateInputRef = useRef(null);
@@ -28,6 +43,8 @@ function ModificarCurso({ onClose, nombreCurso, fecha, hora, modalidad, direccio
         valorCurricular: valorCurricular,
         idCurso: window.localStorage.getItem('id')
     });
+    const [selectedFile, setFile] = useState(null);
+    const [fileName, setFileName] = useState(constaciaVal);
 
     const getTiposCurso = async () => {
         try {
@@ -64,6 +81,7 @@ function ModificarCurso({ onClose, nombreCurso, fecha, hora, modalidad, direccio
     };
 
     const handleSubmit = async () => {
+
         let finalFormData = { ...formData };
 
         if (formData.modalidad === 'Presencial') {
@@ -79,11 +97,18 @@ function ModificarCurso({ onClose, nombreCurso, fecha, hora, modalidad, direccio
             return;
         }
 
+        const jsonData = {
+            curso: finalFormData,
+            constancia: selectedFile.constancia
+        }
+
         try {
-            const response = await Axios.put(`${API_URL}actualizar`, finalFormData, {
+            const response = await fetch(`${API_URL}actualizar`, {
+                method: "PUT",
                 headers: {
-                    'Content-Type': 'application/json',
-                }
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(jsonData),
             });
             closePrev();
             onOpenPopupMsj();
@@ -131,6 +156,26 @@ function ModificarCurso({ onClose, nombreCurso, fecha, hora, modalidad, direccio
                 ...errors,
                 [name]: ''
             }));
+        }
+    };
+
+    const handleAddConstancia = (e) => {
+        const file = e.target.files[0];
+
+        if (file) {
+            setFileName(file.name)
+            const reader = new FileReader();
+
+            reader.onloadend = () => {
+                const base64data = reader.result.split(',')[1];
+
+                setFile((selectedFile) => ({
+                    ...selectedFile,
+                    constancia: base64data
+                }));
+            };
+
+            reader.readAsDataURL(file);
         }
     };
 
@@ -473,6 +518,31 @@ function ModificarCurso({ onClose, nombreCurso, fecha, hora, modalidad, direccio
                                 />
                             </Grid>
                         </Grid>
+                        <Grid container item xs={12} alignItems='center' spacing={2}>
+                                <Grid item xs={6}>
+                                    <Typography variant='body2' sx={{ color: '#FFFFFF', fontSize: '2vh', fontWeight: 'bold' }}>Constacia del Curso:</Typography>
+                                </Grid>
+                                <Grid item xs={6}>
+                                    <Button
+                                        sx={{ marginTop: '1vh', borderRadius: '15px', backgroundColor: '#E7B756', color: '#000' }}
+                                        fullWidth
+                                        component="label"
+                                        role={undefined}
+                                        variant="contained"
+                                        tabIndex={-1}
+                                        startIcon={<CloudUploadIcon />}
+                                    >
+                                        { fileName}
+                                        <VisuallyHiddenInput
+                                            type="file"
+                                            name='constancia'
+                                            id='constancia'
+                                            onChange={handleAddConstancia}
+                                            multiple
+                                        />
+                                    </Button>
+                                </Grid>
+                            </Grid>
                     </CardContent>
                 </div>
             </main>

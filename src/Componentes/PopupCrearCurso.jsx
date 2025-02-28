@@ -205,9 +205,11 @@ function PopupCrearCurso({ onClose, onOpenPopupMsj }) {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
+
+
         const jsonData = {
             curso: DataCurso,
-            constancia: selectedFile.constancia,
+            constancia: selectedFile ? selectedFile.constancia : null,
         };
 
         try {
