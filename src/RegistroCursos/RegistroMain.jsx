@@ -16,6 +16,7 @@ import ModificarCurso from "../Componentes/modificarCurso.jsx";
 
 
 function RegistroMain() {
+
   const navigate = useNavigate();
   const [isPopupAddOpen, setIsPopupAddOpen] = useState(false);
   const [isPopupOpenAddMsj, setIsPopupOpenAddMsj] = useState(false);

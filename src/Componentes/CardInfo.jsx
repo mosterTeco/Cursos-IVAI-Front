@@ -8,6 +8,11 @@ import ErrorIcon from '../assets/error.svg';
 import CargandoIvai from '../Imagenes/Ivaisito2.0.png'
 
 function CardInfo(Props) {
+    
+    
+    var cupoRestante = Props.CupoDisponible;
+    var cupoTotal = Props.Cupo;
+
     const [isPopupOpen, setIsPopupOpen] = useState(false);
     const [isPopupOpenMsj, setIsPopupOpenMsj] = useState(false);
     const [scrollEnabled, setScrollEnabled] = useState(true);
@@ -17,9 +22,10 @@ function CardInfo(Props) {
         titulo: '',
         mensaje: '',
     });
-    
+    const [dataCupoRestante, setDataCupoRestante] = useState(cupoRestante)
+
     const [dataRegistros, setDataRegistros] = useState([]);
-    
+
     const handleOpenPopup = () => {
         setIsPopupOpen(true);
         document.body.style.overflow = "hidden";
@@ -103,12 +109,14 @@ function CardInfo(Props) {
                 <div className="popup-overlay">
                     <div className={`popup-content ${isPopupOpen ? 'popup-show' : 'popup-hide'}`}>
                         <div className="popup-responsive">
-                            <PopupRegistro 
+                            <PopupRegistro
                                 onClose={handleClosePopup}
                                 onOpenPopupMsj={(errorData, errorStatus) => handleOpenPopupMsj(errorData, errorStatus)}
                                 cupo={Props.CupoDisponible}
                                 onReload={Props.reloadCursos}
-                                setIsLoading={setIsLoading} // Pasa setIsLoading a PopupRegistro
+                                setIsLoading={setIsLoading}
+                                cuposRestantes={dataCupoRestante}
+                                setCuposRestantes={setDataCupoRestante}
                             />
                         </div>
                     </div>
