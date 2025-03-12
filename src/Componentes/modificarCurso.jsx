@@ -43,7 +43,7 @@ function ModificarCurso({ onClose, nombreCurso, fecha, hora, modalidad, direccio
         valorCurricular: valorCurricular,
         idCurso: window.localStorage.getItem('id')
     });
-    const [selectedFile, setFile] = useState(null);
+    const [selectedFile, setFile] = useState(constancia);
     const [fileName, setFileName] = useState(constaciaVal);
 
     const getTiposCurso = async () => {
@@ -99,7 +99,7 @@ function ModificarCurso({ onClose, nombreCurso, fecha, hora, modalidad, direccio
 
         const jsonData = {
             curso: finalFormData,
-            constancia: selectedFile ? selectedFile.constancia : null,
+            constancia: selectedFile ? selectedFile : null,
         }
 
         try {

@@ -70,7 +70,6 @@ function PopupRegistro({ onClose, onOpenPopupMsj, cupo, onReload,isLoading, setI
      
         try {
            const response = await axios.post(`${API_URL}registrarse`, dataRegistro);
-           console.log(response.data);
            setIsLoading(false);
      
            if (response.data === 'Registro Correcto' && response.status === 200) {
@@ -82,12 +81,17 @@ function PopupRegistro({ onClose, onOpenPopupMsj, cupo, onReload,isLoading, setI
                  mensaje: 'El proceso se ha realizado correctamente. \nLe hemos enviado un correo electrónico con el enlace de acceso, favor de verificar todas las bandejas del correo electrónico.'
               }, false);
               //onReload();
-           } else if (response.data === 'Curso lleno' && response.status === 200 && cupo == 0) {
+           } else if (response.data === 'Curso lleno' && response.status === 200) {
 
               onOpenPopupMsj({
                  titulo: 'Curso Lleno',
                  mensaje: 'El curso al que intenta registrarse se encuentra lleno. \nNo es posible procesar su registro.'
               }, true);
+           } else if (response.data === 'Correo Existente' && response.status === 200){
+             onOpenPopupMsj({
+                titulo: 'Correo Ya Registrado',
+                mensaje: 'El correo ya se encuentra registrado en el curso.'
+             },true)
            } else {
               onOpenPopupMsj({
                  titulo: 'Error en el Registro',
