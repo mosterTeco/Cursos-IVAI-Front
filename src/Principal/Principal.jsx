@@ -74,7 +74,8 @@ function Principal() {
                             currentCursos.map((curso) => (
                                 curso.estatusCurso === 'Activo' ? (
                                     <div key={curso.idCurso} onClick={() => handleLocal(curso.idCurso)}>
-                                        <CardInfo
+                                        {curso.estatusCupo == 0 ? (
+                                            <CardInfo
                                             NombreCurso={curso.nombreCurso}
                                             FechaCurso={curso.fecha}
                                             ModalidadCurso={curso.modalidad}
@@ -83,7 +84,21 @@ function Principal() {
                                             CupoDisponible={curso.estatusCupo}
                                             Cupo={curso.cupo}
                                             reloadCursos={getCursos}
+                                            Boton={0}
                                         />
+                                        ) : (
+                                            <CardInfo
+                                                NombreCurso={curso.nombreCurso}
+                                                FechaCurso={curso.fecha}
+                                                ModalidadCurso={curso.modalidad}
+                                                ExpositorCurso={curso.imparte}
+                                                HoraCurso={curso.hora}
+                                                CupoDisponible={curso.estatusCupo}
+                                                Cupo={curso.cupo}
+                                                reloadCursos={getCursos}
+                                                Boton={1}
+                                            />
+                                        )}
                                     </div>
                                 ) : (
                                     null

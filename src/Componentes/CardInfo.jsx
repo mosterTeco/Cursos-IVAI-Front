@@ -95,9 +95,15 @@ function CardInfo(Props) {
                                     <label className="Card-text" variant="body2">Hora: {Props.HoraCurso}</label>
                                 </div>
                                 <CardActions className="Card-Actions">
+                                    {Props.Boton == 1 ? (
                                     <button className='Boton-Card' onClick={handleOpenPopup} variant="contained">
                                         Ver Disponibilidad
                                     </button>
+                                    ) : (
+                                        <button className='Boton-Card' disabled  variant="contained">
+                                            Curso lleno
+                                        </button>
+                                    )}
                                 </CardActions>
                             </div>
                         </div>

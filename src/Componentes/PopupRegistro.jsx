@@ -89,7 +89,7 @@ function PopupRegistro({ onClose, onOpenPopupMsj, cupo, onReload,isLoading, setI
               }, true);
            } else if (response.data === 'Correo Existente' && response.status === 200){
              onOpenPopupMsj({
-                titulo: 'Correo Ya Registrado',
+                titulo: 'Correo ya registrado',
                 mensaje: 'El correo ya se encuentra registrado en el curso.'
              },true)
            } else {
